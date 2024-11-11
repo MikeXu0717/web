@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>蹇屁王的个人网站</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jsonwebtoken/9.0.0/jwt-decode.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/node-forge/1.0.1/forge.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jwt-encode/1.0.1/jwt-encode.min.js"></script>
+</head>
+<body>
+    <!-- 顶部区域 -->
+    <header>
+        <h1>蹇屁王的个人网站</h1>
+        <nav>
+            <ul>
+                <li><a href="#home">首页</a></li>
+                <li><a href="#about">关于我</a></li>
+                <li><a href="#portfolio">作品集</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- 主要内容区域 -->
+    <main>
+        <!-- 照片轮播 -->
+        <section class="carousel">
+            <div class="carousel-container">
+                <div class="carousel-slide">
+                    <img src="images/3.jpg" alt="照片1">
+                    <p class="carousel-caption">精选照片1</p>
+                </div>
+                <div class="carousel-slide">
+                    <img src="images/4.jpg" alt="照片2">
+                    <p class="carousel-caption">精选照片2</p>
+                </div>
+                <div class="carousel-slide">
+                    <img src="images/6.jpg" alt="照片3">
+                    <p class="carousel-caption">精选照片3</p>
+                </div>
+            </div>
+            <button class="carousel-prev">上一张</button>
+            <button class="carousel-next">下一张</button>
+        </section>
+
+        <!-- 首页部分 -->
+        <section id="home" class="section">
+            <h2>欢迎来到我的世界</h2>
+            <div class="intro-content">
+                <div class="intro-text">
+                    <p>你好！我是蹇屁王，一名专业时尚模特。</p>
+                    <p>我致力于通过镜头和舞台展现时尚与美的艺术，用专业的态度诠释每一个精彩瞬间。</p>
+                </div>
+                <div class="skills">
+                    <h3>专业领域</h3>
+                    <ul class="skill-list">
+                        <li>时装周走秀</li>
+                        <li>平面广告拍摄</li>
+                        <li>时尚杂志拍摄</li>
+                        <li>品牌代言活动</li>
+                        <li>艺术摄影创作</li>
+                        <li>时尚短视频拍摄</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 关于我部分 -->
+        <section id="about" class="section">
+            <h2>关于我</h2>
+            <div class="about-content">
+                <div class="about-image">
+                    <img src="images/4.jpg" alt="个人照片">
+                </div>
+                <div class="about-text">
+                    <h3>个人简介</h3>
+                    <p>我是一名专业模特，致力于展现时尚与艺术的完美结合。多年来，我在时装秀、平面广告和艺术摄影等领域积累了丰富的经验。</p>
+                    
+                    <h3>专业经历</h3>
+                    <ul>
+                        <li>参与多个知名品牌时装秀走秀</li>
+                        <li>拍摄国际时尚杂志封面及内页</li>
+                        <li>多个奢侈品牌广告代言</li>
+                        <li>艺术摄影展特邀模特</li>
+                    </ul>
+
+                    <h3>个人特长</h3>
+                    <ul>
+                        <li>身高: 165cm</li>
+                        <li>三围: 88/60/89</li>
+                        <li>鞋码: 37</li>
+                        <li>专长: T台走秀、平面拍摄、广告拍摄</li>
+                    </ul>
+
+                    <h3>兴趣爱好</h3>
+                    <p>热爱瑜伽、舞蹈和形体训练，保持专业的身材管理。同时也热衷于时尚摄影艺术创作。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 作品集部分 -->
+        <section id="portfolio" class="section">
+            <h2>作品集</h2>
+            <div class="portfolio-grid">
+                <article class="portfolio-item">
+                    <img src="images/1.jpg" alt="时装秀照片">
+                    <div class="portfolio-info">
+                        <h3>巴黎时装周走秀</h3>
+                        <p>2023年秋冬季巴黎时装周，多个奢侈品牌走秀</p>
+                        <button class="project-link" onclick="openModal('paris-fashion')">查看更多</button>
+                    </div>
+                </article>
+                <article class="portfolio-item">
+                    <img src="images/4.jpg" alt="平面广告">
+                    <div class="portfolio-info">
+                        <h3>时尚杂志拍摄</h3>
+                        <p>VOGUE、ELLE等知名时尚杂志平面拍摄作品</p>
+                        <button class="project-link" onclick="openModal('magazine')">查看更多</button>
+                    </div>
+                </article>
+                <article class="portfolio-item">
+                    <img src="images/6.jpg" alt="艺术摄影">
+                    <div class="portfolio-info">
+                        <h3>艺术摄影展</h3>
+                        <p>与知名摄影师合作的艺术摄影作品展示</p>
+                        <button class="project-link" onclick="openModal('art-photo')">查看更多</button>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- 对话界面 -->
+        <section class="chat-interface">
+            <div class="chat-history">
+                <div class="welcome-message">
+                    <p>欢迎来到我的网站！有什么我可以帮你的吗？</p>
+                </div>
+                <!-- 消息历史将在这里动态添加 -->
+            </div>
+            <div class="chat-input">
+                <input type="text" placeholder="输入你的消息...">
+                <button class="send-button">发送</button>
+            </div>
+            <p class="privacy-notice">
+                <a href="#privacy">隐私声明</a>
+            </p>
+        </section>
+    </main>
+
+    <!-- 底部区域 -->
+    <footer>
+        <div class="social-links">
+            <a href="tencent://message/?uin=你的QQ号码&Site=&Menu=yes" class="social-icon">
+                <img src="images/qq.png" alt="QQ">
+            </a>
+            <a href="javascript:void(0)" onclick="openWeChat()" class="social-icon">
+                <img src="images/wx.png" alt="微信">
+            </a>
+            <a href="https://www.xiaohongshu.com/login" target="_blank" class="social-icon">
+                <img src="images/xhs.png" alt="小红书">
+            </a>
+            <a href="https://www.douban.com" target="_blank" class="social-icon">
+                <img src="images/db.png" alt="豆瓣">
+            </a>
+            <a href="https://login.taobao.com" target="_blank" class="social-icon">
+                <img src="images/tb.png" alt="淘宝">
+            </a>
+            <a href="https://passport.jd.com" target="_blank" class="social-icon">
+                <img src="images/jd.png" alt="京东">
+            </a>
+        </div>
+        <p class="copyright">© 2024 蹇屁王. 保留所有权利。</p>
+    </footer>
+
+    <script src="script.js"></script>
+
+    <!-- 模态框 -->
+    <div id="portfolioModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="modal-body">
+                <!-- 巴黎时装周内容 -->
+                <div class="modal-section" id="paris-fashion">
+                    <h2>巴黎时装周走秀详情</h2>
+                    <div class="modal-grid">
+                        <img src="images/1.jpg" alt="时装秀照片1">
+                        <img src="images/8.jpg" alt="时装秀照片2">
+                        <img src="images/9.jpg" alt="时装秀照片3">
+                    </div>
+                    <div class="modal-text">
+                        <h3>项目描述</h3>
+                        <p>2023年秋冬季巴时装周期间，我有幸为多个国际知名品牌走秀，包括：</p>
+                        <ul>
+                            <li>Chanel 2023秋冬系列</li>
+                            <li>Louis Vuitton 2023冬季系列</li>
+                            <li>Dior 2023秋季高定系列</li>
+                        </ul>
+                        <p>这些经历让我在国际时尚舞台上获得了宝贵的展示机会。</p>
+                    </div>
+                </div>
+                
+                <!-- 时尚杂志拍摄内容 -->
+                <div class="modal-section" id="magazine">
+                    <h2>时尚杂志拍摄作品</h2>
+                    <div class="modal-grid">
+                        <img src="images/4.jpg" alt="杂志照片1">
+                        <img src="images/2.jpg" alt="杂志照片2">
+                        <img src="images/3.jpg" alt="杂志照片3">
+                    </div>
+                    <div class="modal-text">
+                        <h3>项目描述</h3>
+                        <p>作为多家知名时尚杂志的专业模特，我参与了以下重要拍摄：</p>
+                        <ul>
+                            <li>VOGUE中国版 2023年9月刊封面</li>
+                            <li>ELLE中国版 2023年夏季特刊</li>
+                            <li>Marie Claire 2023年主题摄影</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- 艺术摄影展内容 -->
+                <div class="modal-section" id="art-photo">
+                    <h2>艺术摄影作品展示</h2>
+                    <div class="modal-grid">
+                        <img src="images/7.jpg" alt="艺术照片1">
+                        <img src="images/5.jpg" alt="艺术照片2">
+                        <img src="images/6.jpg" alt="艺术照片3">
+                    </div>
+                    <div class="modal-text">
+                        <h3>项目描述</h3>
+                        <p>与多位艺术摄影师合作，创作了一系列极具艺术价值的作品：</p>
+                        <ul>
+                            <li>《光影之间》艺术摄影展</li>
+                            <li>《都市剪影》主题摄影系列</li>
+                            <li>《自然与人》环保主题摄影</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
